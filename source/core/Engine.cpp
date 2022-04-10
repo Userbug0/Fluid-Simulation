@@ -18,7 +18,7 @@ Engine::Engine(const std::string& title, const sf::Color& bgColor):
     Window->setFramerateLimit(Settings::FPS);
 
     Grid = new Field();
-    MyFluid = new Fluid(0.1, 0.1, Grid);
+    MyFluid = new Fluid(0.1f, 0.2f, Grid);
     Menu = new ButtonHandler();
 }
 

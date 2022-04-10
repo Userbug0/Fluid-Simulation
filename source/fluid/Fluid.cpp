@@ -8,7 +8,7 @@ Fluid::Fluid(float viscosity, float diffusion, Field* grid):
     Viscosity.SetMaxValue(0.2);
 
     Diffusion.SetMinValue(0);
-    Diffusion.SetMaxValue(0.2);
+    Diffusion.SetMaxValue(0.4);
 
     Iterations.SetMinValue(2.f);
     Iterations.SetMaxValue(7.f);
