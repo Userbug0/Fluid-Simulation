@@ -1,16 +1,27 @@
-#ifndef ENGINE_HPP
-#define ENGINE_HPP
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
-#include <../../include/fluid/Field.hpp>
-#include <../../include/fluid/Fluid.hpp>
-#include <../../include/menu/ButtonHandler.hpp>
-#include <../../include/core/TextRenderer.hpp>
+#include "../../include/fluid/Field.hpp"
+#include "../../include/fluid/Fluid.hpp"
+#include "../../include/menu/ButtonHandler.hpp"
+#include "../../include/core/TextRenderer.hpp"
 
 
 class Engine
 {
+public:
+    Engine(const std::string& title, const sf::Color& bgColor);
+    ~Engine();
+
+    void Start();
+
+    void Update(const sf::Time& frameTime);
+    void Render();
+    void HandleEvent();
+
+    bool isRunning() { return Running; }
+
 private:
     sf::RenderWindow* Window;
     Field* Grid;
@@ -30,18 +41,5 @@ private:
     TextRenderer InfoSqaures;
 
     void SetValueByCommand();
-public:
-    Engine(const std::string& title, const sf::Color& bgColor);
-    ~Engine();
-
-    void Start();
-
-    void Update(const sf::Time& frameTime);
-    void Render();
-    void HandleEvent();
-
-    bool isRunning(){return Running;}
 };
 
-
-#endif // ENGINE_HPP

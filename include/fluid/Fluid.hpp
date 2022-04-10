@@ -1,29 +1,11 @@
-#ifndef FLUID_HPP
-#define FLUID_HPP
+#pragma once
 
-#include <../../include/fluid/Field.hpp>
-#include <../../include/core/ChangeAble.hpp>
+#include "../../include/fluid/Field.hpp"
+#include "../../include/core/ChangeAble.hpp"
 
 
 class Fluid
 {
-private:
-    int Size;
-
-    ChangeAbleFloat Viscosity;
-    ChangeAbleFloat Diffusion;
-    ChangeAbleFloat Iterations;
-
-    Field* Grid;
-
-    int IX(int x, int y) {return x + Size * y;}
-
-    void Collide(int param, float* arr);
-    void LinearSolve(int param, float* arr, float* prevArr, float a, float c);
-    void Diffuse(int param, float* arr, float* prevArr, float diff, double dt);
-    void StayIncompressible(float* velX, float* velY, float* p, float* div);
-    void Advect(int param, float* arr, float* prevArr, float* velX, float* velY, double dt);
-
 public:
     Fluid(float viscosity, float diffusion, Field* grid);
     ~Fluid();
@@ -33,7 +15,22 @@ public:
     void SetIterations(int percent) {Iterations.SetValueByPercent(percent);}
 
     void Update(double dt);
+
+private:
+    int Size;
+
+    ChangeAbleFloat Viscosity;
+    ChangeAbleFloat Diffusion;
+    ChangeAbleFloat Iterations;
+
+    Field* Grid;
+
+    int IX(int x, int y) { return x + Size * y; }
+
+    void Collide(int param, float* arr);
+    void LinearSolve(int param, float* arr, float* prevArr, float a, float c);
+    void Diffuse(int param, float* arr, float* prevArr, float diff, double dt);
+    void StayIncompressible(float* velX, float* velY, float* p, float* div);
+    void Advect(int param, float* arr, float* prevArr, float* velX, float* velY, double dt);
 };
 
-
-#endif // FLUID_HPP

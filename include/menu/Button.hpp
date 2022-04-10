@@ -1,23 +1,21 @@
-#ifndef BUTTON_HPP
-#define BUTTON_HPP
+#pragma once
 
-#include <../../include/core/ClickAble.hpp>
+#include "../../include/core/ClickAble.hpp"
 
 
 class Button: public ClickAble
 {
 public:
-    enum Commands {Nothing, Viscosity, Diffusion, Accuracy, Velocity, Density, Clear, ChangeColor};
+    enum Commands { Nothing, Viscosity, Diffusion, Accuracy, Velocity, Density, Clear, ChangeColor };
 
-private:
-    Button::Commands ToReturn;
+    Button(Button::Commands command): ToReturn(command) {};
+    virtual ~Button() = default;
 
-public:
-    Button(Button::Commands command);
-    virtual ~Button();
     //return -1 if do not change
     virtual int GetValueToChange() = 0;
     virtual Button::Commands GetCommand() {return ToReturn;}
+
+private:
+    Button::Commands ToReturn;
 };
 
-#endif // BUTTON_HPP

@@ -1,5 +1,4 @@
-#ifndef CLICKABLE_HPP
-#define CLICKABLE_HPP
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
@@ -7,8 +6,8 @@
 class ClickAble
 {
 public:
-    ClickAble();
-    virtual ~ClickAble();
+    ClickAble() = default;
+    virtual ~ClickAble() = default;
 
     virtual void OnMouseMoved(const sf::Vector2i& mpos, const sf::Vector2i& prevMousePos) = 0;
     virtual void OnMousePressed(const sf::Vector2i& mpos) = 0;
@@ -19,4 +18,3 @@ public:
     virtual void Render(sf::RenderWindow* window) = 0;
 };
 
-#endif // CLICKABLE_HPP

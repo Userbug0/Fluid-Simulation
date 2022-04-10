@@ -1,8 +1,9 @@
-#include <../../include/menu/ButtonHandler.hpp>
-#include <../../include/core/Settings.hpp>
-#include <../../include/menu/Slider.hpp>
-#include <../../include/menu/ClickButton.hpp>
-#include <../../include/menu/Selector.hpp>
+#include "../../include/menu/ButtonHandler.hpp"
+
+#include "../../include/core/Settings.hpp"
+#include "../../include/menu/Slider.hpp"
+#include "../../include/menu/ClickButton.hpp"
+#include "../../include/menu/Selector.hpp"
 
 
 ButtonHandler::ButtonHandler():

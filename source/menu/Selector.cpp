@@ -1,4 +1,4 @@
-#include <../../include/menu/Selector.hpp>
+#include "../../include/menu/Selector.hpp"
 
 
 Selector::Selector(const sf::Vector2f& position, Button::Commands command, const std::vector<std::string>& values):
@@ -15,11 +15,10 @@ Selector::Selector(const sf::Vector2f& position, Button::Commands command, const
     Left.setPosition({Position.x - 22, Position.y + 20});
     Left.setPointCount(3);
     Left.rotate(270);
-
 }
 
 
-int Selector::GetValueToChange()
+inline int Selector::GetValueToChange()
 {
     return CurrentIndex;
 }
@@ -96,8 +95,3 @@ void Selector::Render(sf::RenderWindow* window)
     Text.Render(window);
 }
 
-
-Selector::~Selector()
-{
-
-}

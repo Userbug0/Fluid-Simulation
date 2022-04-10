@@ -1,14 +1,25 @@
-#ifndef SLIDER_HPP
-#define SLIDER_HPP
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
-#include <../../include/menu/Button.hpp>
-#include <../../include/core/TextRenderer.hpp>
+#include "../../include/menu/Button.hpp"
+#include "../../include/core/TextRenderer.hpp"
 
 
 class Slider: public Button
 {
+public:
+    Slider(const sf::Vector2f& start, const sf::Vector2f& end, Button::Commands command, const std::string& text);
+    virtual ~Slider() = default;
+
+    int GetValueToChange() override;
+
+    void Render(sf::RenderWindow* window) override;
+    void OnMouseMoved(const sf::Vector2i& mpos, const sf::Vector2i& prevMousePos) override;
+    void OnMousePressed(const sf::Vector2i& mpos) override {Circle.setFillColor(sf::Color::White);}
+    void OnMouseReleased(const sf::Vector2i& mpos) override {Circle.setFillColor(sf::Color::Yellow);}
+    bool Inside(const sf::Vector2i& mpos) override;
+
 private:
     sf::Vector2f Start;
     sf::Vector2f End;
@@ -22,18 +33,5 @@ private:
 
     TextRenderer Info;
     std::string Text;
-
-public:
-    Slider(const sf::Vector2f& start, const sf::Vector2f& end, Button::Commands command, const std::string& text);
-    virtual ~Slider();
-
-    int GetValueToChange() override;
-
-    void Render(sf::RenderWindow* window) override;
-    void OnMouseMoved(const sf::Vector2i& mpos, const sf::Vector2i& prevMousePos) override;
-    void OnMousePressed(const sf::Vector2i& mpos) override {Circle.setFillColor(sf::Color::White);}
-    void OnMouseReleased(const sf::Vector2i& mpos) override {Circle.setFillColor(sf::Color::Yellow);}
-    bool Inside(const sf::Vector2i& mpos) override;
 };
 
-#endif // SLIDER_HPP

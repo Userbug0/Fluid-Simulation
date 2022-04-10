@@ -1,7 +1,8 @@
-#include <../../include/core/Engine.hpp>
-#include <../../include/core/Settings.hpp>
-#include <../../include/core/ChangeAble.hpp>
-#include <../../include/menu/Button.hpp>
+#include "../../include/core/Engine.hpp"
+
+#include "../../include/core/Settings.hpp"
+#include "../../include/core/ChangeAble.hpp"
+#include "../../include/menu/Button.hpp"
 
 
 Engine::Engine(const std::string& title, const sf::Color& bgColor):
@@ -17,10 +18,8 @@ Engine::Engine(const std::string& title, const sf::Color& bgColor):
     Window->setFramerateLimit(Settings::FPS);
 
     Grid = new Field();
-    MyFluid = new Fluid(0.5, 0.5, Grid);
+    MyFluid = new Fluid(0.1, 0.1, Grid);
     Menu = new ButtonHandler();
-
-
 }
 
 

@@ -1,14 +1,14 @@
-#include <../../include/fluid/Fluid.hpp>
+#include "../../include/fluid/Fluid.hpp"
 
 
 Fluid::Fluid(float viscosity, float diffusion, Field* grid):
     Size(grid->GetSize()), Viscosity(viscosity), Diffusion(diffusion), Iterations(5.f), Grid(grid)
 {
     Viscosity.SetMinValue(0);
-    Viscosity.SetMaxValue(1);
+    Viscosity.SetMaxValue(0.2);
 
     Diffusion.SetMinValue(0);
-    Diffusion.SetMaxValue(3);
+    Diffusion.SetMaxValue(0.2);
 
     Iterations.SetMinValue(2.f);
     Iterations.SetMaxValue(7.f);

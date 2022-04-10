@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 
-#include <../../include/core/MainApp.hpp>
+#include "../../include/core/MainApp.hpp"
 
 
 MainApp::MainApp()

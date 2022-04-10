@@ -1,17 +1,10 @@
-#ifndef CHANGEABLE_HPP
-#define CHANGEABLE_HPP
+#pragma once
 
 
 class ChangeAbleFloat{
-private:
-    float Value;
-    float MinValue;
-    float MaxValue;
-
 public:
-    ChangeAbleFloat();
-    ChangeAbleFloat(float value);
-    ~ChangeAbleFloat(){}
+    ChangeAbleFloat(float value = 0);
+    ~ChangeAbleFloat() = default;
 
     void SetValueByPercent(int percent);
 
@@ -20,6 +13,10 @@ public:
     void SetMaxValue(float maxValue) {MaxValue = maxValue;}
 
     float GetValue() const {return Value;}
+
+private:
+    float Value;
+    float MinValue;
+    float MaxValue;
 };
 
-#endif // CHANGEABLE_HPP

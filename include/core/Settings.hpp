@@ -1,12 +1,11 @@
-#ifndef SETTINGS_HPP
-#define SETTINGS_HPP
+#pragma once
 
 
 namespace Settings
 {
     // Fluid can only be square
     unsigned const FLUIDSIZE = 660;
-    unsigned const SCALE = 12;
+    unsigned const SCALE = 11;
     // FluidSize + MenuWidth = ScreenWidth
     unsigned const MENUWIDTH = 200;
 
@@ -14,4 +13,4 @@ namespace Settings
 };
 
 
-#endif // SETTINGS_HPP
+

@@ -1,14 +1,11 @@
-#include <../../include/core/ChangeAble.hpp>
+#include "../../include/core/ChangeAble.hpp"
 
 
 ChangeAbleFloat::ChangeAbleFloat(float value):
-    Value(value)
-{}
+   Value(value), MinValue(0), MaxValue(0)
+{
 
-
-ChangeAbleFloat::ChangeAbleFloat():
-   Value(0), MinValue(0), MaxValue(0)
-{}
+}
 
 
 void ChangeAbleFloat::SetValueByPercent(int percent)

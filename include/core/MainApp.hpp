@@ -1,21 +1,17 @@
-#ifndef MAINAPP_HPP
-#define MAINAPP_HPP
+#pragma once
 
-#include <../../include/core/Engine.hpp>
+#include "../../include/core/Engine.hpp"
 
 
 class MainApp
 {
-private:
-    Engine* MyEngine;
-
 public:
     MainApp();
     ~MainApp();
 
     void Start();
 
+private:
+    Engine* MyEngine;
 };
 
-
-#endif // MAINAPP_HPP

@@ -1,5 +1,5 @@
-#include <../../include/menu/ClickButton.hpp>
-#include <../../include/core/Settings.hpp>
+#include "../../include/menu/ClickButton.hpp"
+#include "../../include/core/Settings.hpp"
 
 
 ClickButton::ClickButton(const sf::Vector2f& position, const sf::Vector2f& size, Button::Commands command, const std::string& text):
@@ -54,8 +54,3 @@ void ClickButton::Render(sf::RenderWindow* window)
     Text.Render(window);
 }
 
-
-ClickButton::~ClickButton()
-{
-
-}

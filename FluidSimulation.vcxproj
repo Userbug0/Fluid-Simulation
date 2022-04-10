@@ -153,14 +153,11 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="source\core\ChangeAble.cpp" />
-    <ClCompile Include="source\core\ClickAble.cpp" />
     <ClCompile Include="source\core\Engine.cpp" />
     <ClCompile Include="source\core\MainApp.cpp" />
-    <ClCompile Include="source\core\Settings.cpp" />
     <ClCompile Include="source\core\TextRenderer.cpp" />
     <ClCompile Include="source\fluid\Field.cpp" />
     <ClCompile Include="source\fluid\Fluid.cpp" />
-    <ClCompile Include="source\menu\Button.cpp" />
     <ClCompile Include="source\menu\ButtonHandler.cpp" />
     <ClCompile Include="source\menu\ClickButton.cpp" />
     <ClCompile Include="source\menu\Selector.cpp" />

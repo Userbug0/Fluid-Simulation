@@ -1,4 +1,4 @@
-#include <../../include/menu/Slider.hpp>
+#include "../../include/menu/Slider.hpp"
 
 
 Slider::Slider(const sf::Vector2f& start, const sf::Vector2f& end, Button::Commands command, const std::string& text):
@@ -41,10 +41,9 @@ bool Slider::Inside(const sf::Vector2i& mpos)
 }
 
 
-int Slider::GetValueToChange()
+inline int Slider::GetValueToChange()
 {
-    int p = (100 * (CurrentPos.x - Start.x) / (End.x - Start.x));
-    return p;
+    return (100 * (CurrentPos.x - Start.x) / (End.x - Start.x));
 }
 
 
@@ -61,8 +60,3 @@ void Slider::Render(sf::RenderWindow* window)
     Info.Render(window);
 }
 
-
-Slider::~Slider()
-{
-
-}

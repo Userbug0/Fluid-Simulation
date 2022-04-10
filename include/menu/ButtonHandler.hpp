@@ -1,21 +1,13 @@
-#ifndef ButtonHandler_HPP
-#define ButtonHandler_HPP
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
-#include <../../include/core/ClickAble.hpp>
-#include <../../include/menu/Button.hpp>
+#include "../../include/core/ClickAble.hpp"
+#include "../../include/menu/Button.hpp"
 
 
 class ButtonHandler: public ClickAble
 {
-private:
-    sf::Vertex ToDraw[4];
-
-    std::vector<Button*> Buttons;
-    int SelectedButton;
-
-    void InitButtons();
 public:
     ButtonHandler();
     virtual ~ButtonHandler();
@@ -28,6 +20,13 @@ public:
     void OnMousePressed(const sf::Vector2i& mpos) override;
     void OnMouseReleased(const sf::Vector2i& mpos) override;
     bool Inside(const sf::Vector2i& mpos) override;
+
+private:
+    sf::Vertex ToDraw[4];
+
+    std::vector<Button*> Buttons;
+    int SelectedButton;
+
+    void InitButtons();
 };
 
-#endif // ButtonHandler_HPP

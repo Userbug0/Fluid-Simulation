@@ -1,10 +1,11 @@
-#include <../../include/core/TextRenderer.hpp>
 #include <iostream>
+
+#include "../../include/core/TextRenderer.hpp"
 
 
 TextRenderer::TextRenderer(const sf::Vector2f& position, const std::string& text, int size)
 {
-    if(!Font.loadFromFile("D:/C++/OpenSans Fonts/OpenSans-Bold.ttf"))
+    if(!Font.loadFromFile("D:/CppProjects/FluidSimulation/OpenSans-Bold.ttf"))
         std::cerr << "Could not load the font\n";
     Text.setFont(Font);
     Text.setString(text);
@@ -18,7 +19,3 @@ void TextRenderer::Render(sf::RenderWindow* window)
     window->draw(Text);
 }
 
-
-TextRenderer::~TextRenderer()
-{
-}

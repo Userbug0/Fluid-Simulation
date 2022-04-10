@@ -1,24 +1,21 @@
-#ifndef TEXTRENDERER_HPP
-#define TEXTRENDERER_HPP
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
 
 class TextRenderer
 {
-private:
-    sf::Text Text;
-    sf::Font Font;
-
 public:
-    TextRenderer(){}
+    TextRenderer() = default;
     TextRenderer(const sf::Vector2f& position, const std::string& text, int size);
-    ~TextRenderer();
+    ~TextRenderer() = default;
 
     void Render(sf::RenderWindow* window);
 
     void SetText(const std::string& text) {Text.setString(text);}
 
+private:
+    sf::Text Text;
+    sf::Font Font;
 };
 
-#endif // TEXTRENDERER_HPP

@@ -1,5 +1,5 @@
-#include <../../include/fluid/Field.hpp>
-#include <../../include/core/Settings.hpp>
+#include "../../include/fluid/Field.hpp"
+#include "../../include/core/Settings.hpp"
 
 
 Field::Cell::Cell(const sf::Vector2f& position, int size):
@@ -10,11 +10,11 @@ Field::Cell::Cell(const sf::Vector2f& position, int size):
 
 
 Field::Field():
-    Size(Settings::FLUIDSIZE / Settings::SCALE + 1), VelocityPerMove(1000),
-    DensityPerMove(100), CurrentMode(ColorMode::White)
+    Size(Settings::FLUIDSIZE / Settings::SCALE + 1), VelocityPerMove(2000),
+    DensityPerMove(135), CurrentMode(ColorMode::White)
 {
     VelocityPerMove.SetMinValue(500);
-    VelocityPerMove.SetMaxValue(2000);
+    VelocityPerMove.SetMaxValue(3500);
 
     DensityPerMove.SetMinValue(25);
     DensityPerMove.SetMaxValue(255);
@@ -102,17 +102,18 @@ sf::Color Field::MakeColor(float density)
     sf::Color result;
     if(density < 3)
         result = {0, 0, 0};
-    else{
+    else
+    {
         if(density > 255)
             density = 255;
+        uint8_t dens = (uint8_t)density;
         if(CurrentMode == ColorMode::White)
-            result = {density, density, density};
+            result = { dens, dens, dens };
         else if(CurrentMode == ColorMode::Pink)
-            result = {density, 0, density};
+            result = { dens, 0, dens };
         else if(CurrentMode == ColorMode::Aqua)
-            result = {0, density, density};
+            result = {0, dens, dens };
     }
-
 
     return result;
 }
@@ -130,7 +131,6 @@ void Field::Render(sf::RenderWindow* window)
             color = MakeColor(d);
             Cells[index].SetColor(color);
             Cells[index].Render(window);
-
         }
     }
 }
