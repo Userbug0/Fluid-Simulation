@@ -17,12 +17,14 @@ Fluid::Fluid(float viscosity, float diffusion, Field* grid):
 
 void Fluid::Update(double dt)
 {
-    float* velX = Grid->VelocityX;
-    float* velY = Grid->VelocityY;
-    float* prevVelX = Grid->PrevVelocityX;
-    float* prevVelY = Grid->PrevVelocityY;
-    float* density = Grid->Density;
-    float* prevDensity = Grid->PrevDensity;
+    FluidDesc& desc = Grid->GetFluidDesc();
+
+    float* velX = desc.VelocityX.data();
+    float* velY = desc.VelocityY.data();
+    float* prevVelX = desc.PrevVelocityX.data();
+    float* prevVelY = desc.PrevVelocityY.data();
+    float* density = desc.Density.data();
+    float* prevDensity = desc.PrevDensity.data();
 
     Diffuse(1, prevVelX, velX, Viscosity.GetValue(), dt);
     Diffuse(2, prevVelY, velY, Viscosity.GetValue(), dt);

@@ -5,23 +5,31 @@
 #include "../../include/core/ClickAble.hpp"
 #include "../../include/core/ChangeAble.hpp"
 
+#include <vector>
+
+
+struct FluidDesc
+{
+    FluidDesc(size_t size)
+        : VelocityX(size), VelocityY(size),
+          PrevVelocityX(size), PrevVelocityY(size),
+          Density(size), PrevDensity(size) {}
+
+    std::vector<float> VelocityX;
+    std::vector<float> VelocityY;
+    std::vector<float> PrevVelocityX;
+    std::vector<float> PrevVelocityY;
+    std::vector<float> Density;
+    std::vector<float> PrevDensity;
+};
 
 class Field: public ClickAble
 {
 public:
-    // This is need for fluid algorithm
-    // idk how to do it another way
-    float* VelocityX;
-    float* VelocityY;
-    float* PrevVelocityX;
-    float* PrevVelocityY;
-    float* Density;
-    float* PrevDensity;
-
     enum ColorMode { White, Pink, Aqua };
 
     Field();
-    virtual ~Field();
+    virtual ~Field() = default;
 
     void SetColorMode(int mode) { CurrentMode = static_cast<ColorMode>(mode); }
     void SetVelocity(int percent) { VelocityPerMove.SetValueByPercent(percent); }
@@ -38,7 +46,9 @@ public:
     void AddVelocity(int x, int y, float velX, float velY);
     void AddDensity(int x, int y, float denisty);
 
-    int GetSize() {return Size;}
+    int GetSize() { return Size; }
+    FluidDesc& GetFluidDesc() { return Desc; }
+    const FluidDesc& GetFluidDesc() const { return Desc; }
 
 private:
     class Cell {
@@ -55,6 +65,7 @@ private:
 
     int Size;
     std::vector<Cell> Cells;
+    FluidDesc Desc;
 
     ChangeAbleFloat VelocityPerMove;
     ChangeAbleFloat DensityPerMove;

@@ -11,23 +11,13 @@ Field::Cell::Cell(const sf::Vector2f& position, int size):
 
 Field::Field():
     Size(Settings::FLUIDSIZE / Settings::SCALE + 1), VelocityPerMove(2000),
-    DensityPerMove(135), CurrentMode(ColorMode::White)
+    DensityPerMove(135), CurrentMode(ColorMode::White), Desc(Size * Size)
 {
     VelocityPerMove.SetMinValue(500);
     VelocityPerMove.SetMaxValue(3500);
 
     DensityPerMove.SetMinValue(25);
     DensityPerMove.SetMaxValue(255);
-
-    int n = Size * Size;
-    VelocityX = new float[n];
-    VelocityY = new float[n];
-    PrevVelocityX = new float[n];
-    PrevVelocityY = new float[n];
-    Density = new float[n];
-    PrevDensity = new float[n];
-
-    Clear();
 
     sf::Vector2f position;
 
@@ -73,27 +63,27 @@ void Field::Clear()
 {
     int n = Size * Size;
     for(int i = 0; i < n; i++){
-        VelocityX[i] = 0;
-        VelocityY[i] = 0;
-        PrevVelocityX[i] = 0;
-        PrevVelocityY[i] = 0;
-        Density[i] = 0;
-        PrevDensity[i] = 0;
+        Desc.VelocityX[i] = 0;
+        Desc.VelocityY[i] = 0;
+        Desc.PrevVelocityX[i] = 0;
+        Desc.PrevVelocityY[i] = 0;
+        Desc.Density[i] = 0;
+        Desc.PrevDensity[i] = 0;
     }
 }
 
 
 void Field::AddDensity(int x, int y, float density)
 {
-    Density[x + Size * y] += density;
+    Desc.Density[x + Size * y] += density;
 }
 
 
 void Field::AddVelocity(int x, int y, float velX, float velY)
 {
     int index = x + Size * y;
-    VelocityX[index] += velX;
-    VelocityY[index] += velY;
+    Desc.VelocityX[index] += velX;
+    Desc.VelocityY[index] += velY;
 }
 
 
@@ -127,21 +117,10 @@ void Field::Render(sf::RenderWindow* window)
     for(int i = 0; i < Size; i++){
         for(int j = 0; j < Size; j++){
             index = j + i * Size;
-            d = Density[index];
+            d = Desc.Density[index];
             color = MakeColor(d);
             Cells[index].SetColor(color);
             Cells[index].Render(window);
         }
     }
-}
-
-
-Field::~Field()
-{
-    delete[] VelocityX;
-    delete[] VelocityY;
-    delete[] PrevVelocityX;
-    delete[] PrevVelocityY;
-    delete[] Density;
-    delete[] PrevDensity;
 }
